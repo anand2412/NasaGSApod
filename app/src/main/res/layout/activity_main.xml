@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.MainActivity"
+    android:background="@color/app_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="visible"/>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:theme="@style/Theme.NasaAPOD.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:titleTextColor="@color/toolbar_txt_color"
+            android:elevation="4dp"
+            app:popupTheme="@style/Theme.NasaAPOD.PopupOverlay" >
+
+            <ImageView
+                android:id="@+id/img_refresh"
+                android:layout_gravity="right"
+                android:layout_width="50dp"
+                android:layout_marginEnd="@dimen/margin_10dp"
+                android:scaleType="center"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_refresh"/>
+
+            <ImageView
+                android:id="@+id/img_calender"
+                android:layout_gravity="right"
+                android:layout_width="50dp"
+                android:layout_marginEnd="@dimen/margin_10dp"
+                android:scaleType="center"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_calendar"/>
+
+            <ImageView
+                android:id="@+id/img_favorite"
+                android:layout_gravity="right"
+                android:layout_width="50dp"
+                android:layout_marginEnd="@dimen/margin_10dp"
+                android:scaleType="center"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_heart"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:textColor="@color/txt_data_color"
+        android:textSize="@dimen/title_text_size"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="center"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/lyt_date_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        android:weightSum="2"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_date"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_16sp"
+            android:textColor="@color/txt_data_color"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_author"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_16sp"
+            android:textColor="@color/txt_data_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lyt_date_container">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:layout_centerInParent="true" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_mark_favorite"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/margin_10dp"
+            android:layout_marginStart="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginEnd="@dimen/margin_10dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:scaleType="center"
+            android:src="@mipmap/ic_heart" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="top"
+            android:maxLines="8"
+            android:minLines="1"
+            android:padding="@dimen/margin_10dp"
+            android:scrollbars="vertical"
+            android:textColor="@color/txt_color_desc"
+            android:textSize="@dimen/desc_text_size_18sp" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
